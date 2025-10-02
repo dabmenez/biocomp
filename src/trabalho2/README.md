@@ -72,6 +72,50 @@ O programa encontrou **7 grampos** na região analisada do genoma Maribacter:
 6. **Posição 789-805:** `AACGTTGAAACGTT` (17 bases)
 7. **Posição 890-906:** `AAATTTGAAATTT` (17 bases)
 
+## Pipeline do código - Como funciona passo a passo:
+
+### 1. **Limpeza da sequência** (`clean()`)
+**Por que:** Sequências de DNA podem ter caracteres indesejados
+- Remove números, espaços, caracteres especiais
+- Deixa apenas A, C, G, T, N (bases válidas)
+- Converte tudo para maiúsculo
+- **Analogia:** É como limpar uma mesa antes de trabalhar
+
+### 2. **Cálculo do complemento reverso** (`revcomp()`)
+**Por que:** Precisamos verificar se o sufixo é complemento do prefixo
+- Aplica regras de complemento: A↔T, C↔G
+- Inverte a ordem da sequência
+- **Analogia:** É como fazer um espelho da sequência com as regras do DNA
+
+### 3. **Busca por grampos** (`find_hairpins()`)
+**Por que:** Esta é a função principal que encontra os grampos
+- **Para cada posição** na sequência:
+  - **Para cada tamanho de arco** (3 a K-1):
+    - Calcula o tamanho total: 2×K + arco
+    - Verifica se está entre 12-20 bases
+    - Pega o prefixo (K bases)
+    - Pega o sufixo (K bases)
+    - Verifica se sufixo = complemento reverso do prefixo
+- **Analogia:** É como procurar padrões em um tapete, testando diferentes tamanhos
+
+### 4. **Remoção de sobreposições**
+**Por que:** Grampos que se sobrepõem podem ser redundantes
+- Ordena por tamanho (maiores primeiro)
+- Remove grampos que começam antes do fim do anterior
+- **Analogia:** É como escolher os melhores assentos no cinema sem sobreposição
+
+### 5. **Download de dados do NCBI** (`fetch_fasta_region()`)
+**Por que:** Precisamos da sequência específica do genoma
+- Conecta com o banco de dados NCBI
+- Baixa apenas a região de interesse (88.450 a 98.458)
+- **Analogia:** É como pedir apenas uma página específica de um livro enorme
+
+### 6. **Salvamento dos resultados** (`save_hits_csv()`)
+**Por que:** Queremos guardar os resultados para análise posterior
+- Cria arquivo CSV com todos os grampos encontrados
+- Inclui posição, tamanho, sequência, etc.
+- **Analogia:** É como fazer uma lista de compras organizada
+
 ## Como executar:
 
 1. Instalar dependências: `pip install requests`

@@ -65,6 +65,55 @@ Os palíndromos no DNA são muito importantes porque:
 - FB2170_17446: glutamato sintase (ferredoxina)
 - FB2170_17451: glutamato sintase dependente de NADPH, subunidade pequena
 
+## Pipeline do código - Como funciona passo a passo:
+
+### 1. **Carregamento dos dados** (`load_genome_data()`)
+**Por que:** Precisamos do genoma completo para analisar regiões específicas
+- Carrega o arquivo FASTA (sequência de DNA)
+- Carrega o arquivo GenBank (anotações dos genes)
+- **Analogia:** É como abrir um livro (genoma) e um índice (anotações)
+
+### 2. **Verificação de palíndromos** (`is_palindrome()`)
+**Por que:** Precisamos verificar se uma sequência é palíndromo
+- Pega uma sequência (ex: "GAATTC")
+- Calcula o complemento reverso ("CTTAAG" → "GAATTC")
+- Compara se são iguais
+- **Analogia:** É como verificar se uma palavra se lê igual de trás para frente
+
+### 3. **Busca por palíndromos de tamanho específico** (`find_maximal_palindromes_of_length_k()`)
+**Por que:** Queremos palíndromos de um tamanho exato (ex: 6 bases)
+- Varre toda a sequência
+- Para cada posição, pega uma subsequência de tamanho K
+- Verifica se é palíndromo
+- **Testa se é maximal:** vê se pode ser estendido (se não pode, é maximal)
+- **Analogia:** É como procurar palavras de exatamente 6 letras que são palíndromos
+
+### 4. **Busca por todos os palíndromos** (`find_all_maximal_palindromes()`)
+**Por que:** Queremos encontrar o maior palíndromo possível
+- Usa algoritmo de "expansão centrada"
+- Para cada base, tenta expandir para os lados
+- Para cada par de bases, tenta expandir para os lados
+- **Analogia:** É como explodir uma bomba no centro e ver até onde a explosão chega
+
+### 5. **Verificação de genes** (`check_cds_overlap()`)
+**Por que:** Queremos saber se os palíndromos estão dentro de genes
+- Compara as posições dos palíndromos com as posições dos genes
+- Verifica se há sobreposição
+- **Analogia:** É como verificar se um endereço está dentro de um bairro
+
+### 6. **Mapeamento para enzimas** (`map_to_restriction_enzymes()`)
+**Por que:** Queremos saber quais enzimas de restrição reconhecem nossos palíndromos
+- Temos uma "base de dados" de enzimas conhecidas
+- Para cada palíndromo, verifica se está na base de dados
+- **Analogia:** É como verificar se uma chave abre alguma fechadura conhecida
+
+### 7. **Geração do relatório** (`generate_report()`)
+**Por que:** Queremos organizar todos os resultados de forma clara
+- Coleta todos os resultados
+- Organiza em seções
+- Gera arquivo Markdown
+- **Analogia:** É como fazer um relatório de pesquisa científica
+
 ## Como executar:
 
 1. Instalar dependências: `pip install biopython`

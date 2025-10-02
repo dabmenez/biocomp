@@ -18,7 +18,6 @@ venv/
 *.gb
 *.gbk
 *.csv
-*.txt
 !README.txt
 !requirements.txt
 

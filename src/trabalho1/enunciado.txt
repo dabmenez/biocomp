@@ -1,0 +1,24 @@
+Exercício: Palíndromo em DNA (proposto em aula)
+
+Uma sub-cadeia de DNA é um palíndromo se tal sub-cadeia for igual ao seu complementar reverso.
+     
+Exemplo: 
+    Cadeia de DNA (fita dupla)
+ 5'       CC.....TATA... AAAGCTA... TACGCGTA...   3'
+ 3'       GG.....ATAT... TTT CGAT...  ATGCGCAT...   5'
+
+TATA e TACGCGTA são palíndromos 
+
+1) Faça um programa na sua linguagem de programação favorita que dado um valor k (inteiro e par). encontre todas as sub-cadeias que sejam palíndromos maximais de tamanho k, e imprima o palínd)romo a posição de início de cada sub-cadeia correspondente (se um palíndromo se repetir, você pode só imprimir as posições onde ele aparece e imprimi-lo apenas uma vez).
+Teste seu programa a Maribacter sp HTCC2170 (aproveite para ler o trabalho de sequenciamento desse organismo:  https://pmc.ncbi.nlm.nih.gov/articles/PMC3019928/  e acesse a sequencia completa de proteinas, e o DNA). 
+Trechos de teste do programa:
+82583..83599
+297449..299453
+
+Algum dos trechos é um ORF?  CDS? 
+
+(conforme visto em aula, acesse o artigo, depois a página do genoma completo, que mostra as proteínas produzidas por cada região codificadora.  Troque para o formato Fasta, que mostra todos os nucleotídios do genoma, e especifique os intervalos pedidos).
+
+2) Qual o tamanho do maior palíndromo maximal encontrado (aumente o tamanho de k, até não encontrar mais palindromos?
+
+3) Aproveite para descobrir 4 enzimas de restrição diferentes  (que cortam o DNA) nos palíndromos encontrados nas sequências pesquisadas).

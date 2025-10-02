@@ -1,0 +1,34 @@
+Identificação de grampos em sequências de DNA
+
+Identificar em sequências de DNA sub cadeias que sejam grampos (hairpin) de cerca de 12--20 bases. Grampos são sub cadeias onde o complementar reverso do prefixo da sub cadeia aparece como sufixo da mesma sub cadeia.
+
+O tamanho do prefixo/sufixo (pescoço do grampo) é K>4, e é informado na entrada do programa, o arco do grampo (cabeça) pode variar entre 3 e o  K-1. O tamanho total dos grampos devem estar entre 12 e 20 bases.
+
+
+Para o exemplo abaixo:
+
+s: ATCTTAAAAACTGGTAACGAACTTACCAATACGTACTCGTTTTTCACACACACGTCACGTGATTTGATCACTTTTT
+
+
+Temos os seguintes grampos: 
+K=6
+
+TGGTAA C G
+                       A
+ACCATT C A
+
+
+K=5
+
+GTGAT T
+                 T
+CACTA G
+
+
+Teste seu programa:
+
+1) para a sequência acima :)
+
+2) para a sequência Fasta da  Maribacter sp HTCC2170 (https://www.ncbi.nlm.nih.gov/nuccore/CP002157.1?report=fasta)  no intervalo 88450..98458.
+
+Imprima a subcadeia (grampo) e Identifique a posição na sequência. Não são permitidos grampos com trechos de interseção.

@@ -108,8 +108,8 @@ Distribuição dos palíndromos por tamanho:
 
 Alguns palíndromos correspondem a sítios de enzimas de restrição conhecidas:
 
-- GCCGGC → NaeI (de Nocardia aerocolonigenes)
 - GCTAGC → NheI (de Neisseria mucosa)
+- GCCGGC → NaeI (de Nocardia aerocolonigenes)
 - GAATTC → EcoRI (de Escherichia coli R)
 
 ---

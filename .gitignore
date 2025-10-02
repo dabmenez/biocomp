@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints
+
+# Arquivos de dados grandes (biologia computacional)
+*.fasta
+*.fa
+*.gb
+*.gbk
+*.csv
+*.txt
+!README.txt
+!requirements.txt
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+*~
+
+# Logs
+*.log

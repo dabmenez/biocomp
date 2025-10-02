@@ -1,0 +1,65 @@
+# Configurações do Git para Biologia Computacional
+
+# Arquivos de texto
+*.py text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.csv text eol=lf
+*.tsv text eol=lf
+
+# Arquivos de configuração
+*.yml text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf
+*.toml text eol=lf
+
+# Scripts
+*.sh text eol=lf
+*.bat text eol=crlf
+
+# Arquivos binários (não versionados)
+*.fasta binary
+*.fa binary
+*.fna binary
+*.faa binary
+*.gb binary
+*.gbk binary
+*.genbank binary
+*.embl binary
+*.gff binary
+*.gff3 binary
+*.gtf binary
+*.bed binary
+*.vcf binary
+*.sam binary
+*.bam binary
+*.bai binary
+*.cram binary
+*.crai binary
+
+# Arquivos de dados grandes
+*.csv binary
+*.tsv binary
+
+# Arquivos de imagem
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.svg binary
+*.pdf binary
+
+# Arquivos de compressão
+*.zip binary
+*.tar binary
+*.gz binary
+*.bz2 binary
+*.xz binary
+
+# Linguagem para diffs
+*.py linguagem=python
+*.md linguagem=markdown
+*.sh linguagem=shell
+*.yml linguagem=yaml
+*.yaml linguagem=yaml
+*.json linguagem=json

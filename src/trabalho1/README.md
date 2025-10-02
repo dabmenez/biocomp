@@ -1,137 +1,87 @@
-# Análise de Palíndromos Maximais - Maribacter sp. HTCC2170
+# Análise de Palíndromos em DNA - Maribacter sp. HTCC2170
 
-Este programa realiza análise computacional de palíndromos maximais no genoma da bactéria Maribacter sp. HTCC2170, respondendo às perguntas específicas da tarefa de biologia computacional.
+## O que é este trabalho?
 
-## Como Funciona
+Este projeto analisa **palíndromos** no genoma da bactéria **Maribacter sp. HTCC2170**. Um palíndromo de DNA é uma sequência que é igual ao seu complemento reverso - como uma palavra que se lê igual de trás para frente, mas com as regras do DNA.
 
-### Conceito de Palíndromo em DNA
-Um palíndromo de DNA é uma sequência que é igual ao seu complemento reverso. Por exemplo:
-- `TATA` é palíndromo porque seu complemento reverso é `ATAT` (que é igual a `TATA` quando lido de trás para frente)
-- `GAATTC` é palíndromo porque seu complemento reverso é `GAATTC`
+## Por que palíndromos são importantes?
 
-### Algoritmo Implementado
-O programa usa uma abordagem de expansão centrada para encontrar palíndromos maximais:
+Os palíndromos no DNA são muito importantes porque:
 
-1. **Palíndromos de comprimento ímpar**: Expande a partir de cada base individual
-2. **Palíndromos de comprimento par**: Expande a partir de cada par de bases adjacentes
-3. **Verificação de maximalidade**: Testa se o palíndromo pode ser estendido mantendo a propriedade palindrômica
+1. **Enzimas de restrição** reconhecem sequências palindrômicas para cortar o DNA
+2. **Elementos regulatórios** podem ter estruturas palindrômicas
+3. **Estruturas secundárias** do DNA podem se formar em regiões palindrômicas
 
-### Estrutura do Código
+## Como funciona?
 
-```python
-# Funções principais:
-- load_genome_data()           # Carrega dados dos arquivos locais
-- is_palindrome()              # Verifica se sequência é palíndromo
-- find_maximal_palindromes_of_length_k()  # Encontra palíndromos de tamanho k
-- find_all_maximal_palindromes()          # Encontra todos os palíndromos maximais
-- check_cds_overlap()          # Verifica sobreposição com genes
-- map_to_restriction_enzymes() # Mapeia para enzimas de restrição
-- generate_report()            # Gera relatório em Markdown
-```
+### Exemplo simples:
+- Sequência: `GAATTC`
+- Complemento: `CTTAAG` (A↔T, C↔G)
+- Reverso: `GAATTC`
+- Como são iguais, `GAATTC` é um palíndromo!
 
-## Como Usar
+### O que o programa faz:
 
-### Execução Completa (Recomendado)
-```bash
-python bacter_final.py
-```
-Executa análise completa das duas regiões especificadas e gera relatório.
+1. **Carrega o genoma** da Maribacter sp. HTCC2170 (3.868.304 bases)
+2. **Analisa duas regiões específicas**:
+   - Região 1: posições 82.583 a 83.599
+   - Região 2: posições 297.449 a 299.453
+3. **Procura palíndromos** de diferentes tamanhos
+4. **Identifica enzimas de restrição** que reconhecem essas sequências
+5. **Verifica se há genes** nessas regiões
 
-### Análise Específica
-```bash
-# Buscar palíndromos de tamanho específico
-python bacter_final.py --k 6 --intervals 82583-83599 297449-299453
+## Resultados encontrados:
 
-# Encontrar apenas o maior palíndromo
-python bacter_final.py --find-largest --intervals 82583-83599 297449-299453
-```
+### 1. Palíndromos de 6 bases (k=6):
 
-## Dependências
+**Região 1:** 12 sequências diferentes encontradas
+- `AAGCTT` → enzima HindIII
+- `GAATTC` → enzima EcoRI
+- `AAATTT` → aparece em 2 posições
 
-```bash
-pip install biopython
-```
+**Região 2:** 18 sequências diferentes encontradas
+- `GCTAGC` → enzima NheI
+- `GCCGGC` → enzima NaeI
+- `AACGTT` → aparece em 2 posições
 
-## Arquivos Necessários
-
-- `maribacter_HTCC2170.fasta` - Sequência genômica (3.7 MB)
-- `maribacter_HTCC2170.gb` - Anotações GenBank (7.6 MB)
-
-## Resultados Obtidos
-
-### 1. Palíndromos Maximais de Tamanho k=6
-
-**Região 1 (82583..83599):** 12 palíndromos únicos
-- `AAGCTT` → posição 82635 (HindIII)
-- `AAATTT` → posições 82715, 82851
-- `GAATTC` → posição 83324 (EcoRI)
-- E mais 9 palíndromos...
-
-**Região 2 (297449..299453):** 18 palíndromos únicos
-- `AACGTT` → posições 297518, 298880
-- `GCTAGC` → posição 299163 (NheI)
-- `GCCGGC` → posição 298663 (NaeI)
-- E mais 15 palíndromos...
-
-### 2. Maior Palíndromo Maximal Encontrado
-
+### 2. Maior palíndromo encontrado:
 - **Sequência:** `AAAATATTTT`
-- **Tamanho:** 10 bp
-- **Posição:** 82645..82654 (Região 1)
-- **Teste de maximalidade:** k=2 a k=10 encontrados, k=12+ não encontrados
+- **Tamanho:** 10 bases
+- **Localização:** posição 82.645 a 82.654
 
-### 3. Enzimas de Restrição Identificadas
+### 3. Enzimas de restrição identificadas:
+1. **EcoRI** (Escherichia coli) - reconhece `GAATTC`
+2. **HindIII** (Haemophilus influenzae) - reconhece `AAGCTT`
+3. **NaeI** (Nocardia aerocolonigenes) - reconhece `GCCGGC`
+4. **NheI** (Neisseria mucosa) - reconhece `GCTAGC`
 
-4 enzimas diferentes encontradas:
-1. **EcoRI** - sítio: `GAATTC` (Escherichia coli R)
-2. **HindIII** - sítio: `AAGCTT` (Haemophilus influenzae Rd)
-3. **NaeI** - sítio: `GCCGGC` (Nocardia aerocolonigenes)
-4. **NheI** - sítio: `GCTAGC` (Neisseria mucosa)
+### 4. Genes encontrados nas regiões:
 
-### 4. Análise de CDS/ORF
+**Região 1:**
+- FB2170_16476: aspartato aminotransferase
+- FB2170_16481: UDP-N-acetilenolpiruvoilglicosamina redutase
 
-**Ambos os trechos contêm genes anotados:**
+**Região 2:**
+- FB2170_17446: glutamato sintase (ferredoxina)
+- FB2170_17451: glutamato sintase dependente de NADPH, subunidade pequena
 
-**Região 1 (82583..83599):**
-- FB2170_16476: aspartate aminotransferase
-- FB2170_16481: UDP-N-acetylenolpyruvoylglucosamine reductase
+## Como executar:
 
-**Região 2 (297449..299453):**
-- FB2170_17446: glutamate synthase (ferredoxin)
-- FB2170_17451: NADPH-dependent glutamate synthase, small subunit
+1. Instalar dependências: `pip install biopython`
+2. Executar: `python bacter_final.py`
+3. O programa gera um relatório completo em Markdown
 
-## Dados Genômicos
+## Dados utilizados:
 
 - **Organismo:** Maribacter sp. HTCC2170
 - **Acesso NCBI:** CP002157.1
-- **Tamanho:** 3,868,304 bp
+- **Tamanho do genoma:** 3.868.304 pares de bases
 - **Fonte:** NCBI (National Center for Biotechnology Information)
 
-## Saída do Programa
+## Conclusões:
 
-```
-Executando análise completa da tarefa...
-Carregando dados do genoma Maribacter sp. HTCC2170 dos arquivos locais...
-Genoma carregado: CP002157.1, comprimento 3,868,304 bp
-
-Análise de 2 região(ões) do genoma Maribacter sp. HTCC2170
-Tamanho do genoma: 3,868,304 bp
-
-Gerando relatório completo...
-Relatório salvo em: relatorio_palindromos_maribacter.md
-
-Resumo do relatório:
-- Análise completa de palíndromos maximais
-- Verificação de CDS/ORF nos trechos
-- Identificação de enzimas de restrição
-- Respostas a todas as perguntas da tarefa
-```
-
-## Relatório Gerado
-
-O programa gera automaticamente `relatorio_palindromos_maribacter.md` com:
-- Análise detalhada de cada região
-- Palíndromos encontrados por tamanho
-- Maior palíndromo maximal identificado
-- Enzimas de restrição mapeadas
-- Respostas completas às perguntas da tarefa
+- Ambas as regiões contêm genes funcionais
+- Foram encontrados múltiplos palíndromos de diferentes tamanhos
+- 4 enzimas de restrição diferentes foram identificadas
+- O maior palíndromo tem 10 bases de comprimento
+- Os palíndromos podem estar relacionados a elementos regulatórios ou sítios de corte por enzimas de restrição
